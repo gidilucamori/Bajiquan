@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Methods\Associati\" />
+    <Folder Include="Methods\Abbonamenti\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Luca_SystemLogger">
+      <HintPath>..\..\..\Luca\Utility\Logger\bin\Release\netstandard2.0\Luca_SystemLogger.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -17,12 +17,12 @@ namespace Bajiquan.Database
 
         public void Start()
         {
-            //createPeople();
+            createPeople();
             //createSedeLezione();
             //createCorso();
             //createLezione();
             //createIscrizione();
-            //createAbbonamento();
+            createAbbonamento();
 
             getGuadagnoMensileCorso();
             getIscrittiAlCorso();
@@ -146,9 +146,13 @@ namespace Bajiquan.Database
         {
             SedeLezione x = new SedeLezione()
             {
-                Paese = "napoli"
+                Paese = "napoli",
+                Cap = "20320",
+                Civico = "3a",
+                Provincia = "Cesenatico",
+                Via = "Del tutto eccezionale"
             };
-            _db.SedeCorsi.Add(x);
+            _db.SedeLezioni.Add(x);
             _db.SaveChanges();
         }
 

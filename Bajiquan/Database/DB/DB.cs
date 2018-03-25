@@ -13,7 +13,7 @@ namespace Bajiquan.Database
         public DbSet<Associato> Associati { get; set; }
         public DbSet<Corso> Corsi { get; set; }
         public DbSet<Lezione> Lezioni { get; set; }
-        public DbSet<SedeLezione> SedeCorsi { get; set; }
+        public DbSet<SedeLezione> SedeLezioni { get; set; }
         public DbSet<Abbonamento> Abbonamenti { get; set; }
         public DbSet<Iscrizione> Iscrizioni { get; set; }
 
@@ -64,6 +64,13 @@ namespace Bajiquan.Database
             //Le lezioni non possono avere stesso corso, giorno, ora e sede
             modelBuilder.Entity<Lezione>()
                 .HasIndex(i => new { i.CorsoId, i.Giorno, i.Orario, i.SedeCorsoId })
+                .IsUnique();
+            #endregion
+
+            #region Sede Lezioni
+            //Le lezioni non possono avere stesso corso, giorno, ora e sede
+            modelBuilder.Entity<SedeLezione>()
+                .HasIndex(i => new { i.Provincia, i.Paese, i.Via, i.Civico })
                 .IsUnique();
             #endregion
 

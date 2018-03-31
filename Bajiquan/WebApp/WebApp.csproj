@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,6 +16,12 @@
   <ItemGroup>
     <ProjectReference Include="..\DatabaseView\DatabaseView.csproj" />
     <ProjectReference Include="..\Database\Database.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Luca_SystemLogger">
+      <HintPath>..\..\..\Luca\Utility\Logger\bin\Release\netstandard2.0\Luca_SystemLogger.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

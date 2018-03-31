@@ -17,15 +17,83 @@ namespace Bajiquan.Database
 
         public void Start()
         {
-            createPeople();
+            //testAddress();
+            testAssociatoView();
+            //createPeople();
             //createSedeLezione();
             //createCorso();
             //createLezione();
             //createIscrizione();
             //createAbbonamento();
 
-            getGuadagnoMensileCorso();
-            getIscrittiAlCorso();
+            //getGuadagnoMensileCorso();
+            //getIscrittiAlCorso();
+        }
+
+        private void testAssociatoView()
+        {
+            DatabaseView.AssociatoView associatoView = new DatabaseView.AssociatoView()
+            {
+                Nome = "Luca",
+                Cognome = "Mori",
+                CodiceFiscale = "qwe",
+                Email = "pongo.ot",
+                Nascita_Paese = "Saronno",
+                Nascita_Provincia = "VA",
+                Sesso = Sesso.Mashcio,
+                Telefono = "029692728",
+                //DataDiNascita = DateTime.Parse("1990/11/05"),
+                //Residenza_Provincia = "MI",
+                //Residenza_Cap = "20020",
+                //Residenza_Civico = "3/50",
+                //Residenza_Paese = "Solaro",
+                //Residenza_Via = "G.Giusti"
+
+            };
+
+
+            LuogoDiNascita luogoDiNascita = new LuogoDiNascita()
+            {
+                Paese = associatoView.Nascita_Paese,
+                Provincia = associatoView.Nascita_Provincia,
+            };
+
+            Indirizzo residenza = new Indirizzo()
+            {
+                Cap = associatoView.Residenza_Cap,
+                Civico = associatoView.Residenza_Civico,
+                Paese = associatoView.Residenza_Paese,
+                Provincia = associatoView.Residenza_Provincia,
+                Via = associatoView.Residenza_Via
+            };
+
+            Associato associato = new Associato()
+            {
+                CodiceFiscale = associatoView.CodiceFiscale,
+                Nome = associatoView.Nome,
+                Cognome = associatoView.Cognome,
+                DataDiNascita = associatoView.DataDiNascita,
+                Email = associatoView.Email,
+                Telefono = associatoView.Telefono,
+                LuogoDiNascitaId = _db.GetOrCreateLuogoDiNascita(luogoDiNascita),
+                ResidenzaId = _db.GetOrCreateResidenza(residenza)
+            };
+
+            _db.Associati.Add(associato);
+            _db.SaveChanges();
+        }
+
+        private void testAddress()
+        {
+            Database.Indirizzo i = new Indirizzo()
+            {
+                Cap = "20020",
+                Civico = "3/50",
+                Paese = "Solaro",
+                Provincia = "MI",
+                Via = "G.Giusti"
+            };
+            _db.GetOrCreateResidenza(i);
         }
 
         private void getGuadagnoMensileCorso()
@@ -196,21 +264,21 @@ namespace Bajiquan.Database
                     DataDiNascita = DateTime.Now,
                     CodiceFiscale = "MROLCU",
                     Email = "luca.mori@hotmail.it",
-                    LuogoNascitaId = 1
+                    LuogoDiNascitaId = 1
                 },
                 new Associato()
                 {
                     Nome = "Marco",
                     Cognome = "Palmisano",
                     DataDiNascita = DateTime.Now,
-                    LuogoNascitaId = 1
+                    LuogoDiNascitaId  = 1
                 },
                 new Associato()
                 {
                     Nome = "Ferretto",
                     Cognome = "Marrone",
                     DataDiNascita = DateTime.Now,
-                    LuogoNascitaId = 1
+                    LuogoDiNascitaId = 1
                 },
             };
             _db.Associati.AddRange(a);

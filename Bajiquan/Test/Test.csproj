@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DatabaseView\DatabaseView.csproj" />
     <ProjectReference Include="..\Database\Database.csproj" />
   </ItemGroup>
 

@@ -1,0 +1,15 @@
+﻿@model DatabaseView.Associato
+@{
+    ViewData["Title"] = "NuovoAssociato";
+}
+
+<h2>NuovoAssociato</h2>
+
+@if (Model == null)
+{
+    <form asp-controller="Associati" asp-action="NuovoAssociato" method="post">
+        @Html.EditorForModel()
+        <button type="submit" value="Salva"></button>
+    </form>
+}
+

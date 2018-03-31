@@ -16,7 +16,8 @@ namespace Bajiquan.Database
         public DbSet<SedeLezione> SedeLezioni { get; set; }
         public DbSet<Abbonamento> Abbonamenti { get; set; }
         public DbSet<Iscrizione> Iscrizioni { get; set; }
-        public DbSet<Indirizzo> Indirizzi { get; set; }
+        public DbSet<LuogoDiNascita> LuoghiDiNascita { get; set; }
+        public DbSet<Indirizzo> Residenze { get; set; }
 
         public DB(DbContextOptions<DB> options) : base(options)
         {
@@ -79,6 +80,13 @@ namespace Bajiquan.Database
             //Più sedi non possono avere lo stesso indirizzo
             modelBuilder.Entity<Indirizzo>()
                 .HasIndex(i => new { i.Cap, i.Civico, i.Paese, i.Provincia, i.Via })
+                .IsUnique();
+            #endregion
+
+            #region Luoghi di Nascita
+            //Più sedi non possono avere lo stesso indirizzo
+            modelBuilder.Entity<LuogoDiNascita>()
+                .HasIndex(i => new { i.Paese, i.Provincia })
                 .IsUnique();
             #endregion
         }

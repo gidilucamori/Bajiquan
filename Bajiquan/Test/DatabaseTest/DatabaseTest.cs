@@ -32,6 +32,7 @@ namespace Bajiquan.Database
 
         private void testAssociatoView()
         {
+            //test database
             DatabaseView.AssociatoView associatoView = new DatabaseView.AssociatoView()
             {
                 Nome = "Luca",

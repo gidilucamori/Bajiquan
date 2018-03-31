@@ -3,11 +3,8 @@
     public class SedeLezione
     {
         public int Id { get; set; }
-        public string Provincia { get; set; }
-        public string Paese { get; set; }
-        public string Via { get; set; }
-        public string Civico { get; set; }
-        public string Cap { get; set; }
+        public int IndirizzoId { get; set; }
+        public Indirizzo Indirizzo { get; set; }
         public Lezione Lezione { get; set; }
     }
 

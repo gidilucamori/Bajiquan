@@ -46,6 +46,7 @@ namespace Bajiquan.Database
                 _log.WriteLog("GetNuomeroIscrittiCorso - " + ex.Message);
                 return null;
             }
+
         }
     }
 }

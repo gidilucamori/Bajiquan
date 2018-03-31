@@ -22,7 +22,7 @@ namespace Bajiquan.Database
             //createCorso();
             //createLezione();
             //createIscrizione();
-            createAbbonamento();
+            //createAbbonamento();
 
             getGuadagnoMensileCorso();
             getIscrittiAlCorso();
@@ -146,11 +146,15 @@ namespace Bajiquan.Database
         {
             SedeLezione x = new SedeLezione()
             {
-                Paese = "napoli",
-                Cap = "20320",
-                Civico = "3a",
-                Provincia = "Cesenatico",
-                Via = "Del tutto eccezionale"
+                Indirizzo = new Indirizzo()
+                {
+                    Paese = "napoli",
+                    Cap = "20320",
+                    Civico = "3a",
+                    Provincia = "Cesenatico",
+                    Via = "Del tutto eccezionale"
+                }
+
             };
             _db.SedeLezioni.Add(x);
             _db.SaveChanges();
@@ -170,28 +174,43 @@ namespace Bajiquan.Database
 
         private void createPeople()
         {
+
+            Indirizzo LuogoNascita = new Indirizzo()
+            {
+                Cap = "20020",
+                Paese = "Solaro",
+                Provincia = "MI",
+                Civico = "3/50",
+                Via = "Giusti"
+            };
+            //_db.Indirizzi.Add(LuogoNascita);
+            //_db.SaveChanges();
+
             List<Associato> a = new List<Associato>()
             {
+
                 new Associato()
                 {
                     Nome = "Luca",
                     Cognome = "Mori",
                     DataDiNascita = DateTime.Now,
-
+                    CodiceFiscale = "MROLCU",
+                    Email = "luca.mori@hotmail.it",
+                    LuogoNascitaId = 1
                 },
                 new Associato()
                 {
                     Nome = "Marco",
                     Cognome = "Palmisano",
                     DataDiNascita = DateTime.Now,
-
+                    LuogoNascitaId = 1
                 },
                 new Associato()
                 {
                     Nome = "Ferretto",
                     Cognome = "Marrone",
                     DataDiNascita = DateTime.Now,
-
+                    LuogoNascitaId = 1
                 },
             };
             _db.Associati.AddRange(a);

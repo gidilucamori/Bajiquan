@@ -16,6 +16,7 @@ namespace Bajiquan.Database
         public DbSet<SedeLezione> SedeLezioni { get; set; }
         public DbSet<Abbonamento> Abbonamenti { get; set; }
         public DbSet<Iscrizione> Iscrizioni { get; set; }
+        public DbSet<Indirizzo> Indirizzi { get; set; }
 
         public DB(DbContextOptions<DB> options) : base(options)
         {
@@ -68,12 +69,18 @@ namespace Bajiquan.Database
             #endregion
 
             #region Sede Lezioni
-            //Le lezioni non possono avere stesso corso, giorno, ora e sede
+            //Più sedi non possono avere lo stesso indirizzo
             modelBuilder.Entity<SedeLezione>()
-                .HasIndex(i => new { i.Provincia, i.Paese, i.Via, i.Civico })
+                .HasIndex(i => new { i.IndirizzoId })
                 .IsUnique();
             #endregion
 
+            #region Indirizzi
+            //Più sedi non possono avere lo stesso indirizzo
+            modelBuilder.Entity<Indirizzo>()
+                .HasIndex(i => new { i.Cap, i.Civico, i.Paese, i.Provincia, i.Via })
+                .IsUnique();
+            #endregion
         }
     }
 }

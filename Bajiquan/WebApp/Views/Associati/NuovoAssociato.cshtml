@@ -7,11 +7,26 @@
 
 <h2>NuovoAssociato</h2>
 
+@if (ViewData["DBError"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewData["DBError"]
+    </div>
+}
+
+@if ((string)ViewData["SalvataggioRiuscito"] == "si")
+{
+    <div class="alert alert-success" role="alert">
+        Il salvataggio di @ViewData["Nome"] - @ViewData["Cognome"] è riuscita correttamente.
+        <br>Codice Fiscale [ @ViewData["CodiceFiscale"].ToString().ToUpper() ]
+    </div>
+
+}
+
 @if (Model == null)
 {
     <form asp-controller="Associati" asp-action="NuovoAssociato" method="post">
         @Html.EditorForModel()
-        <button type="submit" value="Salva"></button>
-        @(Html.GetEnumSelectList<Bajiquan.Database.Sesso>())
+        <button type="submit">Salva</button>
     </form>
 }

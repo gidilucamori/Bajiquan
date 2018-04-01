@@ -48,8 +48,21 @@ namespace WebApp.Controllers
                     ResidenzaId = _db.GetOrCreateResidenza(residenza)
                 };
 
-                _db.Associati.Add(associato);
-                _db.SaveChanges();
+                try
+                {
+                    _db.Associati.Add(associato);
+                    _db.SaveChanges();
+                    ViewData["SalvataggioRiuscito"] = "si";
+                    ViewData["Nome"] = associato.Nome;
+                    ViewData["Cognome"] = associato.Cognome;
+                    ViewData["CodiceFiscale"] = associato.CodiceFiscale;
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException.Message.Length > 250)
+                        ViewData["DBError"] = ex.InnerException.Message.Substring(0, 250) + " ...";
+                    else ViewData["DBError"] = ex.InnerException.Message;
+                }
             }
             return View();
         }

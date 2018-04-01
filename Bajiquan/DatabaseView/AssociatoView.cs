@@ -40,7 +40,7 @@ namespace DatabaseView
 
         #region Residenza
         [Display(Name = "Residenza : Provincia")]
-        [MaxLength(2)]
+        [StringLength(2, ErrorMessage = "La provincia non può contenere più di 2 caratteri.")]
         public string Residenza_Provincia { get; set; }
 
         [Display(Name = "Residenza : Paese")]
@@ -53,7 +53,7 @@ namespace DatabaseView
         public string Residenza_Civico { get; set; }
 
         [Display(Name = "Residenza : Cap")]
-        [MaxLength(5)]
+        [StringLength(5, ErrorMessage = "Il Cap non può contenere piu di 5 caratteri")]
         public string Residenza_Cap { get; set; }
         #endregion
 

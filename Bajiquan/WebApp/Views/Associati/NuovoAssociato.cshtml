@@ -1,4 +1,6 @@
-﻿@model DatabaseView.Associato
+﻿@model DatabaseView.AssociatoView
+@using Bajiquan.Database
+
 @{
     ViewData["Title"] = "NuovoAssociato";
 }
@@ -10,6 +12,6 @@
     <form asp-controller="Associati" asp-action="NuovoAssociato" method="post">
         @Html.EditorForModel()
         <button type="submit" value="Salva"></button>
+        @(Html.GetEnumSelectList<Bajiquan.Database.Sesso>())
     </form>
 }
-

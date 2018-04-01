@@ -18,6 +18,7 @@ namespace WebApp.Controllers
 
         public IActionResult NuovoAssociato(DatabaseView.AssociatoView associatoView)
         {
+            var a = 1 + 1 == 2;
             if (Request.Method == "POST" && associatoView != null)
             {
                 LuogoDiNascita luogoDiNascita = new LuogoDiNascita()

@@ -26,27 +26,4 @@ namespace Bajiquan.Database
         public int? ResidenzaId { get; set; }
         public Indirizzo Residenza { get; set; }
     }
-
-    public enum Sesso
-    {
-        Mashcio,
-        Femmina
-    }
-
-    public class Indirizzo
-    {
-        public int Id { get; set; }
-        public string Provincia { get; set; }
-        public string Paese { get; set; }
-        public string Via { get; set; }
-        public string Civico { get; set; }
-        public string Cap { get; set; }
-    }
-
-    public class LuogoDiNascita
-    {
-        public int Id { get; set; }
-        public string Provincia { get; set; }
-        public string Paese { get; set; }
-    }
 }

@@ -43,13 +43,12 @@ namespace Bajiquan.Database
                 Nascita_Provincia = "VA",
                 Sesso = Sesso.Mashcio,
                 Telefono = "029692728",
-                //DataDiNascita = DateTime.Parse("1990/11/05"),
-                //Residenza_Provincia = "MI",
-                //Residenza_Cap = "20020",
-                //Residenza_Civico = "3/50",
-                //Residenza_Paese = "Solaro",
-                //Residenza_Via = "G.Giusti"
-                //test commint from terminal
+                DataDiNascita = DateTime.Parse("1990/11/05"),
+                Residenza_Provincia = "MI",
+                Residenza_Cap = "20020",
+                Residenza_Civico = "3/50",
+                Residenza_Paese = "Solaro",
+                Residenza_Via = "G.Giusti"
 
             };
 

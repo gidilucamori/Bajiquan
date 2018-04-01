@@ -49,6 +49,7 @@ namespace Bajiquan.Database
                 //Residenza_Civico = "3/50",
                 //Residenza_Paese = "Solaro",
                 //Residenza_Via = "G.Giusti"
+                //test commint from terminal
 
             };
 

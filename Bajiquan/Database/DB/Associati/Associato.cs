@@ -9,18 +9,27 @@ namespace Bajiquan.Database
     public class Associato
     {
         public int Id { get; set; }
+
         [Required]
         public string Nome { get; set; }
+
         [Required]
         public string Cognome { get; set; }
+
         [Required]
         public string CodiceFiscale { get; set; }
+
         [Required]
         public Sesso Sesso { get; set; }
+
         public string Telefono { get; set; }
         public string Email { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime DataDiNascita { get; set; }
+
+        //Sono impostati nullable perchè cosi posso creare un associato ma
+        //impostare in un secondo momento il luogo di nascita e il domicilio
         public int? LuogoDiNascitaId { get; set; }
         public LuogoDiNascita LuogoDiNascita { get; set; }
         public int? ResidenzaId { get; set; }

@@ -52,7 +52,7 @@ namespace WebApp
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Associati}/{action=NuovoAssociato}/{id?}");
             });
         }
     }

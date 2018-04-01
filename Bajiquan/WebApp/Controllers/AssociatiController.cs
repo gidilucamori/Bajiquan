@@ -16,11 +16,6 @@ namespace WebApp.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult NuovoAssociato(DatabaseView.AssociatoView associatoView)
         {
             if (Request.Method == "POST" && associatoView != null)
@@ -43,6 +38,7 @@ namespace WebApp.Controllers
                 Associato associato = new Associato()
                 {
                     CodiceFiscale = associatoView.CodiceFiscale,
+                    Sesso = associatoView.Sesso,
                     Nome = associatoView.Nome,
                     Cognome = associatoView.Cognome,
                     DataDiNascita = associatoView.DataDiNascita,

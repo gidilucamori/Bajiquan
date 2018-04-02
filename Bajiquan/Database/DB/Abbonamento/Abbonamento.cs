@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Bajiquan.Database
 {
@@ -9,9 +10,8 @@ namespace Bajiquan.Database
         public Corso Corso { get; set; }
         public int AssociatoId { get; set; }
         public Associato Associato { get; set; }
+        [DataType(DataType.Date)]
         public DateTime Mese { get; set; }
     }
-
-
 
 }

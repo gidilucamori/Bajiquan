@@ -1,11 +1,9 @@
-﻿@model DatabaseView.AssociatoView
-@using Bajiquan.Database
-
+﻿@model Bajiquan.Database.Associato
 @{
-    ViewData["Title"] = "NuovoAssociato";
+    ViewData["Title"] = "Modifica";
 }
 
-<h2>NuovoAssociato</h2>
+<h2>Modifica Associato</h2>
 
 @if (ViewData["DBError"] != null)
 {
@@ -17,11 +15,11 @@
 @if ((string)ViewData["SalvataggioRiuscito"] == "si")
 {
     <div class="alert alert-success" role="alert">
-        Il salvataggio di @ViewData["Nome"] è riuscita correttamente.
-        <br>Codice Fiscale [ @ViewData["CodiceFiscale"].ToString().ToUpper() ]
+        Le modifiche per l'associato @ViewData["Nome"] sono state salvate.
     </div>
-
 }
+
+@Html.Partial("SelezionaAssociato", ViewData["ListOfAssociati"])
 
 @if (Model == null)
 {

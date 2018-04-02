@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Luca_Email">
+      <HintPath>..\..\..\Luca\Utility\Email\bin\Release\netstandard2.0\Luca_Email.dll</HintPath>
+    </Reference>
     <Reference Include="Luca_SystemLogger">
       <HintPath>..\..\..\Luca\Utility\Logger\bin\Release\netstandard2.0\Luca_SystemLogger.dll</HintPath>
     </Reference>

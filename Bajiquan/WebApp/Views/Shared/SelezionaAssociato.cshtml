@@ -1,0 +1,4 @@
+﻿@model Bajiquan.Database.SelectAssociato
+
+<select asp-for="Id" asp-items="@(new SelectList(Model.Elenco, "Id", "FullName"))">
+</select>

@@ -18,16 +18,42 @@ namespace Bajiquan.Database
         public void Start()
         {
             //testAddress();
-            testAssociatoView();
+            //testAssociatoView();
             //createPeople();
             //createSedeLezione();
             //createCorso();
             //createLezione();
             //createIscrizione();
             //createAbbonamento();
-
+            //testAssociazione();
             //getGuadagnoMensileCorso();
             //getIscrittiAlCorso();
+            ricreateTestDB();
+        }
+
+        private void ricreateTestDB()
+        {
+            createPeople();
+
+        }
+
+        private void testAssociazione()
+        {
+            Associazione a = new Associazione()
+            {
+                Qualifica = Qualifica.SocioOrdinario,
+                Mansione = Mansione.Allievo,
+                DataRichiesta = DateTime.Now,
+                DataAccettazione = DateTime.Now,
+                DataPagamento = DateTime.Now,
+                AssociatoId = 1
+            };
+            _db.Associazioni.Add(a);
+            _db.SaveChanges();
+
+            Associato x = _db.Associati.Include(i => i.Associazioni).FirstOrDefault(i=>i.Id == 1);
+            _db.SaveChanges();
+            Associato f = _db.Associati.Include(i => i.Associazioni).FirstOrDefault(i => i.Id == 1);
         }
 
         private void testAssociatoView()
@@ -41,7 +67,7 @@ namespace Bajiquan.Database
                 Email = "pongo.ot",
                 Nascita_Paese = "Saronno",
                 Nascita_Provincia = "VA",
-                Sesso = Sesso.Mashcio,
+                Sesso = Sesso.Maschio,
                 Telefono = "029692728",
                 DataDiNascita = DateTime.Parse("1990/11/05"),
                 Residenza_Provincia = "MI",
@@ -244,16 +270,13 @@ namespace Bajiquan.Database
         private void createPeople()
         {
 
-            Indirizzo LuogoNascita = new Indirizzo()
+            LuogoDiNascita LuogoNascita = new LuogoDiNascita()
             {
-                Cap = "20020",
                 Paese = "Solaro",
                 Provincia = "MI",
-                Civico = "3/50",
-                Via = "Giusti"
             };
-            //_db.Indirizzi.Add(LuogoNascita);
-            //_db.SaveChanges();
+            _db.LuoghiDiNascita.Add(LuogoNascita);
+            _db.SaveChanges();
 
             List<Associato> a = new List<Associato>()
             {
@@ -265,20 +288,30 @@ namespace Bajiquan.Database
                     DataDiNascita = DateTime.Now,
                     CodiceFiscale = "MROLCU",
                     Email = "luca.mori@hotmail.it",
+                    Sesso = Sesso.Maschio,
+                    Telefono = "029692728",
                     LuogoDiNascitaId = 1
                 },
                 new Associato()
                 {
-                    Nome = "Marco",
-                    Cognome = "Palmisano",
+                    Nome = "Luca",
+                    Cognome = "Mori",
                     DataDiNascita = DateTime.Now,
-                    LuogoDiNascitaId  = 1
+                    CodiceFiscale = "MROLCUW",
+                    Email = "luca.mori@hotmail.it",
+                    Sesso = Sesso.Maschio,
+                    Telefono = "029692728",
+                    LuogoDiNascitaId = 1
                 },
                 new Associato()
                 {
-                    Nome = "Ferretto",
-                    Cognome = "Marrone",
+                    Nome = "Luca",
+                    Cognome = "Mori",
                     DataDiNascita = DateTime.Now,
+                    CodiceFiscale = "MROLCUD",
+                    Email = "luca.mori@hotmail.it",
+                    Sesso = Sesso.Maschio,
+                    Telefono = "029692728",
                     LuogoDiNascitaId = 1
                 },
             };

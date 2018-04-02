@@ -1,0 +1,48 @@
+﻿@model DatabaseView.CertificatoMedicoView
+@{
+    ViewData["Title"] = "Nuovo Certificato Medico";
+}
+
+<h2>Nuovo Certificato Medico</h2>
+
+@if (ViewData["DBError"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewData["DBError"]
+    </div>
+}
+
+@if ((string)ViewData["SalvataggioRiuscito"] == "si")
+{
+    <div class="alert alert-success" role="alert">
+        Il nuovo certificato medico è stato salvato.<br />
+        @ViewData["Nome"] dovrà rinnovarlo in data @ViewData["ExpityDate"]
+    </div>
+}
+
+
+@Html.Partial("SelezionaAssociato", ViewData["ListOfAssociati"])
+
+@if (Model == null)
+{
+    <form asp-controller="CertificatiMedici" asp-action="NuovoCertificato" method="post">
+        @Html.EditorForModel()
+        <button type="submit">Salva</button>
+    </form>
+}
+
+<script>
+    var associatoId = document.getElementById("AssociatoId");
+    associatoId.readOnly = true;
+
+    var listId = document.getElementById("Id");
+
+    listId.onchange = GetNewId;
+
+    function GetNewId() {
+        var newId = listId.options[listId.selectedIndex].value;
+        associatoId.value = newId;
+    }
+
+    onload = GetNewId();
+</script>

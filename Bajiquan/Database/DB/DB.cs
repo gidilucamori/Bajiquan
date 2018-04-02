@@ -18,6 +18,8 @@ namespace Bajiquan.Database
         public DbSet<Iscrizione> Iscrizioni { get; set; }
         public DbSet<LuogoDiNascita> LuoghiDiNascita { get; set; }
         public DbSet<Indirizzo> Residenze { get; set; }
+        public DbSet<Associazione> Associazioni { get; set; }
+        public DbSet<CertificatoMedico> CertificatiMedici { get; set; }
 
         public DB(DbContextOptions<DB> options) : base(options)
         {
@@ -89,6 +91,7 @@ namespace Bajiquan.Database
                 .HasIndex(i => new { i.Paese, i.Provincia })
                 .IsUnique();
             #endregion
+
         }
     }
 }

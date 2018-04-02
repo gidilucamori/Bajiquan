@@ -1,0 +1,60 @@
+﻿@using Bajiquan.Database
+@model DatabaseView.AssociazioneView
+
+@{
+    ViewData["Title"] = "Associazione/Rinnovo";
+}
+
+<h2>Nuova Associazione / Rinnovo</h2>
+
+@if (ViewData["DBError"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewData["DBError"]
+    </div>
+}
+
+@if ((bool?)ViewData["AssociazioneNonScaduta"] == true)
+{
+    <div class="alert alert-danger" role="alert">
+        Attenzione! @ViewData["Nome"] è ancora un associato.
+        <br>La sua tessera scadrà il giorno @(ViewData["ExpiryDate"])
+    </div>
+}
+
+@if ((string)ViewData["SalvataggioRiuscito"] == "si")
+{
+    <div class="alert alert-success" role="alert">
+        La nuova iscrizione è andata a buon fine.<br />
+        @ViewData["Nome"] sarà un associato fino al giorno @ViewData["ExpityDate"]
+    </div>
+}
+
+
+  @Html.Partial("SelezionaAssociato", ViewData["ListOfAssociati"])
+
+@if (Model == null)
+{
+    <form asp-controller="Associazioni" asp-action="NuovaAssociazione" method="post">
+        @Html.EditorForModel()
+        <button type="submit">Salva</button>
+    </form>
+}
+
+<script>
+    var associatoId = document.getElementById("AssociatoId");
+    associatoId.readOnly = true;
+
+    var associatoRichiesto = @ViewData["AssociatoRichiesto"];
+
+    var listId = document.getElementById("Id");
+
+    listId.onchange = GetNewId;
+
+    function GetNewId() {
+        var newId = listId.options[listId.selectedIndex].value;
+        associatoId.value = newId;
+    }
+
+    onload = GetNewId();
+</script>

@@ -20,7 +20,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Bajiquan [Sezione Privata]</a>
+        <a class="navbar-brand" href="@Url.Action("Elenco","Associati")">Bajiquan [Sezione Privata]</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,28 +28,38 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="@Url.Action("Elenco","Associati")">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Associati
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="@Url.Action("NuovoAssociato","Associati")">Registra Nuovo Associato</a>
-                        <a class="dropdown-item" href="#">Modifica Associato</a>
+                        <a class="dropdown-item" href="@Url.Action("Elenco","Associati")">Elenco Persone</a>
+                        <a class="dropdown-item" href="@Url.Action("Modifica","Associati")">Modifica Associato</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Gestione Associazioni e Rinnovi</a>
+                        <a class="dropdown-item" href="@Url.Action("NuovoAssociato","Associati")">Registra Nuovo Associato</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="@Url.Action("NuovaAssociazione","Associazioni")">Gestione Associazioni e Rinnovi</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Corsi
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Action("Elenco","Corsi")">Elenco Corsi</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="">Registra Nuovo Corso</a>
+                        <a class="dropdown-item" href="#">Modifica Corso</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="">Iscrizione Corso</a>
+                        <a class="dropdown-item" href="">Cancella Iscrizione</a>
+                    </div>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Ricerca Persona" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" asp-action="Elenco" asp-controller="Associati" method="post">
+                <input class="form-control mr-sm-2" name="search" type="search" placeholder="Ricerca Persona" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
